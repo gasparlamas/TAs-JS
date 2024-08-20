@@ -1,92 +1,99 @@
 
+function mostrarResultado(texto) {
+    const resultadosDiv = document.getElementById("resultados");
+    const nuevoResultado = document.createElement("p");
+    nuevoResultado.textContent = texto;
+    resultadosDiv.appendChild(nuevoResultado);
+}
+
 /////////// PARTE 1/////////////
 
-function repeatString(texto,repeticiones){
+function repeatString(texto, repeticiones) {
     let resultado = "";
-    for (let i=0; i < repeticiones; i++){
-        resultado+= texto;
-    }
-    return resultado
-}
-console.log(repeatString("hola", 3));
-
-function reverseString(texto){
-    let resultado = "";
-    for (let i = texto.length -1; i >= 0; i--){
-        resultado+= texto[i];
+    for (let i = 0; i < repeticiones; i++) {
+        resultado += texto;
     }
     return resultado;
 }
-console.log(reverseString("cuadernola"));
+
+function reverseString(texto) {
+    let resultado = "";
+    for (let i = texto.length - 1; i >= 0; i--) {
+        resultado += texto[i];
+    }
+    return resultado;
+}
+
+//resultados
+let cadena = prompt("Introduci tu cadena:");
+let repeticiones = parseInt(prompt("Introduci la cantidad de repeticiones:"));
+let cadenaInvertida =  prompt("Introduci tu cadena para invertir:");
+mostrarResultado("Tu cadena repetida " + repeticiones + " veces es: " + repeatString(cadena, repeticiones));
+mostrarResultado("Tu cadena invertida es: " + reverseString(cadenaInvertida));
 
 /////////// PARTE 2/////////////
 
-function removeFromArray(arreglo,item){
+function removeFromArray(arreglo, item) {
     let indice = arreglo.indexOf(item);
-    if (indice !==-1){
-        arreglo.splice(indice,1);
+    if (indice !== -1) {
+        arreglo.splice(indice, 1);
     }
     return arreglo;
 }
-console.log(removeFromArray(["Enero","Abril","Junio","Marzo","Diciembre"],"Junio"));
+
+//resultado
+let arreglo = prompt("Introduci un array de numeros (separado por comas):").split(",");
+let item = prompt("Introduci el elemento a eliminar:");
+mostrarResultado("Tu array ahora se ve así: " + removeFromArray(array, eliminarItem) + " , el elemento eliminado es: " + eliminarItem);
 
 const books = [
-    {
-      title: "IT",
-      author: "Stephen King"
-    },
-    {
-      title: "El sapo Ruperto",
-      author: "Roy Berocay"
-    },
-    {
-        title: "Percy Jackson",
-        author: "Rick Riordan"
-    },
-    {
-        title: "El psicoanalista",
-        author: "John Grisham"
-    }
-  ]
+    { title: "IT", author: "Stephen King" },
+    { title: "El sapo Ruperto", author: "Roy Berocay" },
+    { title: "Percy Jackson", author: "Rick Riordan" },
+    { title: "El psicoanalista", author: "John Grisham" }
+];
 
-function getTheTitles(books){
+function getTheTitles(books) {
     let titulos = [];
-    for(let i = 0; i<books.length; i++){
+    for (let i = 0; i < books.length; i++) {
         if (books[i] && books[i].title) {
             titulos.push(books[i].title);
         }
     }
     return titulos;
 }
-console.log(getTheTitles(books));
 
-  
-
+//resultado
+mostrarResultado("Los títulos de los libros son: " + getTheTitles(books).join(", "));
 
 /////////// PARTE 3/////////////
 
-function getOdds(nums){
+function getOdds(nums) {
     let resultado = [];
-    for (let i= 0; i < nums.length; i++){
-        if (i%2 !== 0){
+    for (let i = 0; i < nums.length; i++) {
+        if (i % 2 !== 0) {
             resultado.push(i);
         }
     }
     return resultado;
 }
-console.log(getOdds([1,2,3,4,5,6,7,8,9,10]));
 
-function duplicates(nums){
+function duplicates(nums) {
     let resultado = 0;
     let repetidos = [];
-    for (let i= 0; i < nums.length; i++){
-        if(repetidos.includes(nums[i])){
-            resultado += 1
-        }
-        else {
+    for (let i = 0; i < nums.length; i++) {
+        if (repetidos.includes(nums[i])) {
+            resultado += 1;
+        } else {
             repetidos.push(nums[i]);
-        }        
+        }
     }
-    return "la cantidad de repetidos es: " + resultado
+    return "La cantidad de repetidos es: " + resultado;
 }
-console.log(duplicates([1,2,2,3,3,4,4,5]));
+
+//resultados
+let nums = prompt("Introduci un array de números para ver cuantos duplicados hay (separado por comas) :").split(",").map(Number);
+mostrarResultado("Los números impares son: " + getOdds(nums));
+mostrarResultado(duplicates(nums));
+
+

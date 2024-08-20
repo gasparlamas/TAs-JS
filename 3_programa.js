@@ -118,40 +118,47 @@ let repeticiones = parseInt(prompt("Introduci la cantidad de repeticiones"));
 //Invert cadena
 let invertida = prompt("Introduci tu cadena para invertir");
 //Eliminar elemento array
-let eliminarArray = prompt("Introduci un array");
+let eliminarArray = prompt("Introduci un array de numeros (separado por comas)");
 let eliminarItem = prompt("Eleji el elemento a eliminar");
 let array = eliminarArray.split(",");
 //impares
-let verImpar = prompt("Introduci un array de numeros para ver cuales son impar");
+let verImpar = prompt("Introduci un array de numeros para ver cuales son impar (separado por comas)");
 let impar = verImpar.split(",");
 //duplicados
-let verDuplicados = prompt("Introduci un array para ver la cantidad de elementos duplicados que tiene: ");
+let verDuplicados = prompt("Introduci un array para ver la cantidad de elementos duplicados que tiene (separado por comas)");
 let duplicados = verDuplicados.split(",");
 //suma rango
 let sumaInicio = parseInt(prompt("Introduci desde que numero empieza tu suma"));
 let sumaFin = parseInt(prompt("Introduci hasta que numero incluye tu suma"));
 //temperaturas
-let pasarCelsius = parseFloat(prompt("Introduci la temperatura a transformar a Celsius: "));
-let pasarFarenheit = parseFloat(prompt("Introduci la temperatura a transformar a Farenheit: "));
+let pasarCelsius = parseFloat(prompt("Introduci la temperatura a transformar a Celsius"));
+let pasarFarenheit = parseFloat(prompt("Introduci la temperatura a transformar a Farenheit"));
 //año bisiesto
-let bisiesto = parseInt(prompt("Introduci un año para ver si es bisiesto: "));
+let bisiesto = parseInt(prompt("Introduci un año para ver si es bisiesto"));
 //suma array
-let suma = (prompt("Introduci un array de numeros: "));
+let suma = (prompt("Introduci un array de numeros para sumar (separado por comas)"));
 let sumaTotal = suma.split(",").map(Number);
 //generar password
-let contraseña = parseInt(prompt("Introduci la cantidad de caracteres de tu contraseña:"));
+let contraseña = parseInt(prompt("Introduci la cantidad de caracteres de tu contraseña"));
 
 
-//Resultados
-console.log("Tu cadena es: " + repeatString(cadena,repeticiones));
-console.log("Tu cadena invertida es: " + reverseString(cadena));
-console.log("Tu array se ve asi: " + removeFromArray(array,eliminarItem) + " ,el elemento eliminado es: " + eliminarItem);
-console.log("Los impares son: " + getOdds(impar));
-console.log("La cantidad de duplicados es: " + duplicates(duplicados));
-console.log("La suma del rango indicado es: "+ sumAll(sumaInicio,sumaFin));
-console.log("La conversion a Farenheit es: " + convertToCelsius(pasarCelsius));
-console.log("La conversion a Celsius es: " + convertToFarenheit(pasarFarenheit));
-console.log("El año es bisiesto? " + leapYears(bisiesto));
-console.log("La suma de los elementos del array es: " + getSums(sumaTotal));
-console.log("Tu contraseña es: " + generatePassword(contraseña));
+function mostrarResultado(texto) {
+    const resultadosDiv = document.getElementById("resultados");
+    const nuevoResultado = document.createElement("p");
+    nuevoResultado.textContent = texto;
+    resultadosDiv.appendChild(nuevoResultado);
+}
+
+
+mostrarResultado("Tu cadena repetida " + repeticiones + " veces es: " + repeatString(cadena, repeticiones));
+mostrarResultado("Tu cadena invertida es: " + reverseString(invertida));
+mostrarResultado("Tu array ahora se ve así: " + removeFromArray(array, eliminarItem) + " , el elemento eliminado es: " + eliminarItem);
+mostrarResultado("Los impares son: " + getOdds(impar));
+mostrarResultado("La cantidad de duplicados es: " + duplicates(duplicados));
+mostrarResultado("La suma del rango indicado es: " + sumAll(sumaInicio, sumaFin));
+mostrarResultado("La conversión a Fahrenheit es: " + convertToCelsius(pasarCelsius));
+mostrarResultado("La conversión a Celsius es: " + convertToFarenheit(pasarFarenheit));
+mostrarResultado("¿El año es bisiesto? " + (leapYears(bisiesto) ? "Sí" : "No"));
+mostrarResultado("La suma de los elementos del array es: " + getSums(sumaTotal));
+mostrarResultado("Tu contraseña es: " + generatePassword(contraseña));
 
